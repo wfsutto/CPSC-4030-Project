@@ -1,0 +1,39 @@
+.flex-container {
+    display: flex;
+    background-color: DodgerBlue;
+    align-content: flex-end;
+}
+  
+
+
+#subcontainer{
+  flex-direction: column;
+  justify-content: center;
+  width: 150%;
+  margin:20px;
+}
+
+#downs{
+  background-color: green;
+  width: 100%;
+  height: 450px;
+  margin-bottom: 20px;
+
+
+}
+
+#success{
+  background-color: orange;
+  width: 100%;
+  height: 720px;
+  margin: 20px;
+  margin-left: 0px;
+
+}
+
+#time{
+  background-color: purple;
+  width: 100%;
+  height: 250px;
+
+}
