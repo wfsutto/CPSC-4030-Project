@@ -1,10 +1,24 @@
 .flex-container {
-    display: flex;
-    background-color: DodgerBlue;
-    align-content: flex-end;
+  display: flex;
+  background-color: DodgerBlue;
+  align-content: flex-end;
 }
-  
 
+h1 {
+  margin-block-start: 0.8em;
+  margin-block-end: 0.45em;
+  text-align: center;
+}
+
+.p1 {
+  margin-block-start: 0.8em;
+  margin-block-end: 0.8em;
+  text-align: center;
+}
+
+html {
+  background-color: beige;
+}
 
 #subcontainer{
   flex-direction: column;
