@@ -8,6 +8,7 @@ h1 {
   margin-block-start: 0.8em;
   margin-block-end: 0.45em;
   text-align: center;
+  margin-top:0px
 }
 
 .p1 {
@@ -25,29 +26,33 @@ html {
   justify-content: center;
   width: 150%;
   margin:20px;
-}
-
-#downs{
-  background-color: green;
-  width: 100%;
-  height: 450px;
-  margin-bottom: 20px;
-
 
 }
 
 #success{
-  background-color: orange;
+  background-color: green;
   width: 100%;
-  height: 720px;
+  height: 450px;
+  margin-bottom: 0px;
+
+}
+
+#downs{
+  background-color: white;
+  width: 100%;
+  height: 800px;
   margin: 20px;
   margin-left: 0px;
+  margin-top:0px;
 
 }
 
 #time{
-  background-color: purple;
-  width: 100%;
-  height: 250px;
+  background-color: white;
 
+
+}
+
+#pictures{
+  height: 50px
 }

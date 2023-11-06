@@ -27,7 +27,8 @@ d3.csv("trying_something_2.csv").then(
 			var rows = tbody.selectAll('tr')
 			  				.data(dataset)
 							.enter()
-							.append('tr');
+							.append('tr')
+							.attr("height", "50px")
 		
 			// create a cell in each row for each column
 			var cells = rows.append('td')
