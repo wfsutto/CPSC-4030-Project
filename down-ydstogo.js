@@ -1,46 +1,61 @@
-d3.csv("2018-2022_nflfastR_clean.csv").then(
+d3.csv("trying_something_2.csv").then(
     function(dataset){
-        console.log(dataset)
+        //console.log(dataset)
 
-        var size = 360;
+		var alpha = d3.scaleLinear().domain([0, 100]).range([0, 1]);
 
-        var svg = d3.select("#downs")
-                    .attr("width", size)
-                    .attr("height", size*2)
+		var headerLabel = ['Yards to Go', 'First Down', 'Second Down', 'Third Down', 'Fourth Down'];
 
-        var colLabel = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11+'];
+		var colLabel = ['ydstogo_buckets', 'Down1', 'Down2', 'Down3', 'Down4'];
 
-        var rowLabel = ['1', '2', '3', '4'];
+		
+		function tabulate(dataset, columns, label) {
+			var table = d3.select('#downs').append('table')
+			var thead = table.append('thead')
+			var	tbody = table.append('tbody');
+		
+			table.attr('border', '1px', 'black')
 
-        var table = d3.select("#downs").append("table")
+			// append the header row
+			thead.append('tr')
+				.selectAll('th')
+				.data(label).enter()
+				.append('th')
+				.text(function (label) { return label; });
+		
+			// create a row for each object in the data
+			var rows = tbody.selectAll('tr')
+			  				.data(dataset)
+							.enter()
+							.append('tr');
+		
+			// create a cell in each row for each column
+			var cells = rows.append('td')
+							.text(function(d){
+								return d.ydstogo_buckets;
+							})
+							.enter()
 
-        console.log(table)
-
-        var thead = table.append('thead')
-	    var	tbody = table.append('tbody');
-
-	    // append the header row
-	    thead.append('tr')
-	        .selectAll('th')
-	        .data(rowLabel).enter()
-	        .append('th')
-	        .text(function (rowLabel) { return rowLabel; });
-
-	    // create a row for each object in the data
-	    var rows = tbody.selectAll('tr')
-	                    .data(dataset)
-	                    .enter()
-	                    .append('tr');
-
-	    // create a cell in each row for each column
-	    var cells = rows.selectAll('td')
-	                    .data(function (d,i) {
-	                        return d;
-	                    })
-	                    .enter()
-	                    .append('td')
-	                    .text(function(d){
-                            return d;
-                        });
+			rows.selectAll('td')
+				.data(function (row) {
+					return columns.map(function (column) {
+					return {column: column, value: row[column]};
+					});
+				})
+				.enter()
+				.append('td')
+				// .text(function (d) { 
+				// 	return d.value; 
+				// })
+				.style('background-color', function (d) {
+					return 'rgba(' +255 + ',' +0 + ',' +0 + ',' + alpha(d.value) + ')';
+				})			
+			
+		  return table;
+		}
+		
+		tabulate(dataset, colLabel, headerLabel);
+	
+					
     }
 )
